@@ -1,0 +1,21 @@
+[window]
+decorations = "Full"
+
+[window.padding]
+x = 10
+y = 10
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "CommitMono Nerd Font Mono"
+
+[cursor.style]
+shape = "Block"
+
+[selection]
+save_to_clipboard = true
+
+[terminal.shell]
+program = "/usr/bin/fish"

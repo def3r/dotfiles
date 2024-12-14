@@ -1,0 +1,50 @@
+#!/bin/bash
+
+session_num=0
+title="random"
+is_attached=false
+
+if [ $# -eq 1 ]; then
+  title=$1
+elif [ $# -gt 1 ]; then
+  echo "only accept 1 argument"
+  exit 1
+fi
+
+tmux has -t $title >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+  session_num=$(tmux ls | grep -ic $title)
+  session_num=$((session_num + 1))
+fi
+
+is_attached=$(tmux ls | grep -ic "(attached)" | bc)
+if [[ "$is_attached" == "1" ]]; then
+  is_attached=true
+else
+  is_attached=false
+fi
+
+if [ "$is_attached" = 1 ]; then
+  echo "cannot create nested tmux sessions"
+  exit 1
+fi
+
+if [ "$session_num" -eq 0 ]; then
+  session_num=""
+else
+  session_num="-$session_num"
+fi
+
+tmux new-session -d -s "$title$session_num"
+
+tmux send-keys -t "$title$session_num":1 "fish" C-m
+tmux send-keys -t "$title$session_num":1 "nvim ./" C-m
+
+tmux new-window -t "$title$session_num":2 -n "fish"
+tmux send-keys -t "$title$session_num":2 "fish" C-m
+
+tmux new-window -t "$title$session_num":3 -n "launcher"
+tmux select-window -t 3 \; split-window -h
+tmux select-window -t 1
+
+tmux attach -t "$title$session_num"
