@@ -147,18 +147,7 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
-  -- my theme
-  {
-    'hachy/eva01.vim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'eva01'
-      -- or
-      -- vim.cmd.colorscheme "eva01-LCL"
-    end,
-  }, -- O.o my cutsom added Plug in o.O
-
+  -- alternate theme
   --  {
   --    'gbprod/nord.nvim',
   --    lazy = false,
@@ -168,6 +157,9 @@ require('lazy').setup({
   --      vim.cmd.colorscheme 'nord'
   --    end,
   --  },
+
+  -- firenvim
+  { 'glacambre/firenvim', build = ':call firenvim#install(0)' },
 
   {
     'windwp/nvim-autopairs',
@@ -190,16 +182,6 @@ require('lazy').setup({
   'nvim-tree/nvim-web-devicons',
 
   { 'echasnovski/mini.icons', version = false },
-
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
-    opts = {},
-  },
 
   {
     'jose-elias-alvarez/null-ls.nvim',
@@ -298,8 +280,8 @@ require('lazy').setup({
     build = ':UpdateRemotePlugins',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
-      --      'nvim-telescope/telescope.nvim', -- optional
-      --      'neovim/nvim-lspconfig', -- optional
+      'nvim-telescope/telescope.nvim', -- optional
+      'neovim/nvim-lspconfig', -- optional
     },
     opts = {},
   },
@@ -674,7 +656,15 @@ require('lazy').setup({
           },
         },
 
-        tailwindcss = {},
+        tailwindcss = {
+          filetypes = {
+            'jsx',
+            'tsx',
+            'ts',
+            'js',
+            'svelte',
+          },
+        },
 
         beautysh = {
           'sh',
@@ -687,6 +677,10 @@ require('lazy').setup({
         },
 
         basedpyright = {},
+
+        serve_d = {
+          'd',
+        },
 
         jdtls = {},
 
@@ -782,7 +776,7 @@ require('lazy').setup({
         bash = { 'beautysh' },
         sh = { 'shfmt', 'beautysh ' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'isort', 'black' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -1008,6 +1002,7 @@ require('lazy').setup({
         'cpp',
         'gitignore',
         'java',
+        'arduino',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
@@ -1080,46 +1075,11 @@ require('lazy').setup({
 })
 
 -- Custom Config, finally!
-vim.keymap.set('n', '<leader>hb', ':sp<CR>:enew<CR>', { desc = 'new [H]orizontal [B]uffer', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>vb', ':vs<CR>:enew<CR>', { desc = 'new [V]ertical [B]uffer', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>vt', ':vs<CR>:term<CR>ifish<CR>', { desc = 'new [V]ertical [T]erminal', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ht', ':sp<CR>:term<CR>ifish<CR>', { desc = 'new [V]ertical [T]erminal', noremap = true, silent = true })
-
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { desc = 'new [V]ertical terminal', noremap = true, silent = true })
-vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k')
-vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j')
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h')
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l')
-
-vim.keymap.set('n', '<leader>x', ':q<CR>', { desc = 'e[X]it and close buffer', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = '[E]xplorer', noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ve', ':Vexplore!<CR>', { desc = '[V]ertical split [E]plorer', noremap = true, silent = true })
-vim.keymap.set('n', '<M-k>', ':m .-2<CR>==', { desc = 'Move current line up', noremap = true, silent = true })
-vim.keymap.set('n', '<M-j>', ':m .+1<CR>==', { desc = 'Move current line down', noremap = true, silent = true })
-vim.keymap.set('x', '<M-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up', noremap = true, silent = true })
-vim.keymap.set('x', '<M-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down', noremap = true, silent = true })
-
--- Create a key mapping to call the switch_buffers function
-vim.keymap.set('n', '\\', '<C-^>', { desc = 'Switch between buffers' })
-vim.keymap.set('n', '-', '<C-w>-', { desc = 'Decrease tab height' })
-vim.keymap.set('n', '+', '<C-w>+', { desc = 'Increase tab height' })
-
--- debug mappings
-vim.keymap.set('n', '<leader>db', ':DapToggleBreakpoint<CR>', { desc = '[D]ebugger toggle [B]reakpoint' })
-vim.keymap.set('n', '<leader>dr', ':DapContinue<CR>', { desc = '[D]bugger [R]un or continue' })
-
--- undo tree:
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'toggle [U]ndo tree' })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require 'custom.keymaps'
+require 'custom.floaterminal'
 
 -- Some cool mappings: (relating to web dev)
 vim.opt.wildignore:append { '*/node_modules/*' }
--- vim.keymap.set('n', 'x', '_x') -- not storing deleted chars in the yank register
-vim.keymap.set('n', '<leader>mw', ':w<CR>', { desc = ':[w]' })
-vim.keymap.set('n', '<leader>mq', ':q<CR>', { desc = ':[q]' })
-vim.keymap.set('n', '<leader>mQ', ':qa<CR>', { desc = ':qa' })
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -1132,3 +1092,10 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'netrw',
   command = 'setlocal relativenumber',
 })
+vim.lsp.set_log_level 'off'
+
+vim.filetype.add {
+  extension = {
+    ino = 'cpp',
+  },
+}

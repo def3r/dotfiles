@@ -6,6 +6,7 @@ if status is-interactive
     end
 
     set -U fish_user_paths $fish_user_paths ~/.scripts
+    set -Ux VIRTUAL_ENV_DISABLE_PROMPT 1
 end
 
 function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'

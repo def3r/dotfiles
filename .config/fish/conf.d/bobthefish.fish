@@ -3,6 +3,7 @@ set -g theme_color_scheme nord
 set -g theme_display_user ssh
 # set -g default_user bobthecow
 
+set -g theme_display_virtualenv yes
 set -g fish_prompt_pwd_dir_length 0
 set -g theme_show_project_parent no
 
