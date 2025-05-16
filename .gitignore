@@ -1,0 +1,8 @@
+.config/omf/omf
+.config/gh/gh
+.config/alacritty/alacritty
+.config/fish/fish
+.config/nvim/nvim
+
+backup/
+
