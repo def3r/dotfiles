@@ -1,0 +1,233 @@
+[
+  {
+    "settings": {
+      "disableAll": false,
+      "exposeIframes": false,
+      "exposeStyleName": false,
+      "keepAlive": 0,
+      "keepAliveIdle": false,
+      "newStyleAsUsercss": false,
+      "openEditInWindow": false,
+      "openEditInWindow.popup": false,
+      "patchCsp": false,
+      "show-badge": true,
+      "styleViaASS": false,
+      "styleViaXhr": false,
+      "urlInstaller": true,
+      "windowPosition": {},
+      "compactWidth": 850,
+      "config.autosave": true,
+      "schemeSwitcher.enabled": "system",
+      "schemeSwitcher.nightStart": "18:00",
+      "schemeSwitcher.nightEnd": "06:00",
+      "popup.enabledFirst": true,
+      "popup.stylesFirst": true,
+      "popup.autoResort": false,
+      "popup.borders": false,
+      "popup.findSort": "w",
+      "manage.onlyEnabled": false,
+      "manage.onlyLocal": false,
+      "manage.onlyUsercss": false,
+      "manage.onlyEnabled.invert": false,
+      "manage.onlyLocal.invert": false,
+      "manage.onlyUsercss.invert": false,
+      "manage.actions.expanded": false,
+      "manage.backup.expanded": true,
+      "manage.filters.expanded": true,
+      "manage.links.expanded": true,
+      "manage.minColumnWidth": 750,
+      "manage.newUI": true,
+      "manage.newUI.favicons": true,
+      "manage.newUI.faviconsGray": false,
+      "manage.newUI.targets": 3,
+      "manage.newUI.sort": "title,asc",
+      "manage.searchMode": "meta",
+      "editor.options": {},
+      "editor.toc.expanded": true,
+      "editor.options.expanded": true,
+      "editor.options.style.expanded": true,
+      "editor.lint.expanded": true,
+      "editor.publish.expanded": true,
+      "editor.lineWrapping": true,
+      "editor.smartIndent": true,
+      "editor.indentWithTabs": false,
+      "editor.tabSize": 4,
+      "editor.keyMap": "default",
+      "editor.theme": "default",
+      "editor.beautify": {
+        "selector_separator_newline": true,
+        "newline_before_open_brace": false,
+        "newline_after_open_brace": true,
+        "newline_between_properties": true,
+        "newline_before_close_brace": true,
+        "newline_between_rules": false,
+        "preserve_newlines": true,
+        "end_with_newline": false,
+        "indent_conditional": true,
+        "indent_mozdoc": true,
+        "space_around_combinator": true,
+        "space_around_cmp": false
+      },
+      "editor.beautify.hotkey": "",
+      "editor.lintDelay": 300,
+      "editor.linter": "csslint",
+      "editor.lintReportDelay": 500,
+      "editor.matchHighlight": "token",
+      "editor.autoCloseBrackets": true,
+      "editor.autocompleteOnTyping": false,
+      "editor.contextDelete": false,
+      "editor.selectByTokens": true,
+      "editor.arrowKeysTraverse": true,
+      "editor.appliesToLineWidget": true,
+      "editor.autosaveDraft": 10,
+      "editor.livePreview": true,
+      "editor.livePreview.delay": 0.2,
+      "editor.targetsFirst": true,
+      "editor.colorpicker": true,
+      "editor.colorpicker.hexUppercase": false,
+      "editor.colorpicker.hotkey": "",
+      "editor.colorpicker.color": "",
+      "editor.colorpicker.maxHeight": 300,
+      "hotkey._execute_browser_action": "",
+      "hotkey.openManage": "",
+      "hotkey.styleDisableAll": "",
+      "sync.enabled": "none",
+      "iconset": -1,
+      "badgeDisabled": "#8B0000",
+      "badgeNormal": "#006666",
+      "headerWidth.edit": 287,
+      "headerWidth.install": 287,
+      "headerWidth.manage": 287,
+      "popup.search.globals": false,
+      "popupWidth": 246,
+      "popupWidthMax": 280,
+      "updateInterval": 24,
+      "updateOnlyEnabled": false
+    },
+    "order": {
+      "main": [],
+      "prio": []
+    }
+  },
+  {
+    "enabled": true,
+    "installDate": 1736102669745,
+    "sections": [
+      {
+        "code": ""
+      }
+    ],
+    "sourceCode": "/* ==UserStyle==\n@name           x.com\n@namespace      github.com/openstyles/stylus\n@version        1.0.0\n@description    Filter useless features of x.com\n@author         ElonEggYoinker69\n==/UserStyle== */\n@-moz-document domain(\"x.com\") {\n    /* Annoying Features I never asked for */\n    /* You Might Like div */\n    div.r-vacyoi > div:nth-child(3),\n\n    /* uhhh ???? */\n    div.r-vacyoi:nth-child(4) > div,\n\n    /* What's happening div */\n    div.r-kemksi:nth-child(4),\n\n    /* Who to Follow div */\n    div.r-kemksi:nth-child(5),\n\n    /* Bottom Messaging */\n    div.r-cgjvx2 > div:nth-child(1) {\n        display: none !important\n    }\n    \n    /* NavBar Links I never asked for */\n    /* Explore */\n    a.css-175oi2r:nth-child(2),\n    \n    /* Grok */\n    a.css-175oi2r:nth-child(5),\n    \n    /* Bookmarks */\n    a.css-175oi2r:nth-child(6),\n    \n    /* Communities */\n    a.css-175oi2r:nth-child(7),\n    \n    /* Premium XD */\n    a.css-175oi2r:nth-child(8),\n    \n    /* Verified Orgies */\n    a.css-175oi2r:nth-child(9),\n    \n    /* More Button */\n    button.css-175oi2r:nth-child(10),\n    button.css-175oi2r:nth-child(11),\n    \n    /* Big Whit Post */\n    a.r-1fkl15p {\n        display: none !important\n    }\n}",
+    "usercssData": {
+      "name": "x.com",
+      "namespace": "github.com/openstyles/stylus",
+      "version": "1.0.0",
+      "description": "Filter useless features of x.com",
+      "author": "ElonEggYoinker69"
+    },
+    "author": "ElonEggYoinker69",
+    "description": "Filter useless features of x.com",
+    "name": "x.com",
+    "updateDate": 1736105811203,
+    "_id": "652429d7-10b6-4cc6-8e95-d4f85b2189f1",
+    "_rev": 1736105811203,
+    "id": 1,
+    "customName": "FilteredX"
+  },
+  {
+    "enabled": false,
+    "installDate": 1736106017789,
+    "sections": [
+      {
+        "code": ""
+      }
+    ],
+    "sourceCode": "/* ==UserStyle==\n@name           FilterGram\n@namespace      github.com/openstyles/stylus\n@version        1.0.0\n@description    Filter annoyinh features of instagram\n@author         ZuckBanger69\n==/UserStyle== */\n@-moz-document domain(\"www.instagram.com\") {\n    /* Suggested for you right split */\n    div.x3hkoc4,\n\n    /* Navbar*/\n    /* Reels */\n    div.x1xgvd2v > div:nth-child(2) > div:nth-child(4),\n\n    /* Create */\n    div.x1xgvd2v > div:nth-child(2) > div:nth-child(7),\n\n    /* AI Studio and Threads*/\n    .x1azxncr > div:nth-child(1),\n    .x1azxncr > span:nth-child(2) {\n        display: none !important\n    }\n\n    /* Align Content to middle after removing Right Split*/\n    div.x10o80wk {\n        width: 100% !important\n    }\n\n    /* OnlyPosts */\n    div.x972fbf:nth-child(2) {\n        display: none !important\n    }\n}\n@-moz-document url-prefix(\"https://www.instagram.com/direct/\") {\n    div.x10o80wk {\n        width: auto !important\n    }\n    .x1v4esvl.x1v4esvl {\n        width: calc(100% - var(--nav-narrow-width)) !important\n    }\n}",
+    "usercssData": {
+      "name": "FilterGram",
+      "namespace": "github.com/openstyles/stylus",
+      "version": "1.0.0",
+      "description": "Filter annoyinh features of instagram",
+      "author": "ZuckBanger69"
+    },
+    "author": "ZuckBanger69",
+    "description": "Filter annoyinh features of instagram",
+    "name": "FilterGram",
+    "updateDate": 1736107670753,
+    "_id": "173e95d0-24d1-42d8-b5be-15d7921e6958",
+    "_rev": 1747307419108,
+    "id": 2,
+    "customName": "FilterGram"
+  },
+  {
+    "enabled": true,
+    "installDate": 1747404424623,
+    "name": "www.youtube.com",
+    "sections": [
+      {
+        "code": "/* ==UserStyle==\n@name           www.youtube.com/watch\n@namespace      github.com/openstyles/stylus\n@version        1.0.0\n@description    A new userstyle\n@author         Me\n==/UserStyle== */"
+      },
+      {
+        "code": "html,\n    body,\n    #content,\n    ytd-app,\n    ytd-masthead #container,\n    ytd-rich-grid-renderer #chips,\n    ytd-guide-renderer {\n        --yt-spec-base-background: #000000 !important;\n        background-color: #000000 !important\n    }",
+        "urlPrefixes": [
+          "https://www.youtube.com/"
+        ]
+      }
+    ],
+    "updateDate": 1747404424623,
+    "_id": "73f0de72-94da-4245-9872-5261be91e64a",
+    "_rev": 1747404424624,
+    "id": 3
+  },
+  {
+    "enabled": true,
+    "installDate": 1747405073089,
+    "name": "www.google.com/",
+    "sections": [
+      {
+        "code": "html,\nbody,\n#slim_appbar,\n#searchform,\n.sfbg, .MjjYud, .Ww4FFb {\n    background-color: #000000 !important\n}",
+        "urlPrefixes": [
+          "https://www.google.com/"
+        ]
+      }
+    ],
+    "updateDate": 1747405436250,
+    "_id": "bd85523f-b506-4aab-a92f-24b994a43100",
+    "_rev": 1747405436250,
+    "id": 4
+  },
+  {
+    "enabled": true,
+    "installDate": 1747405686747,
+    "name": "github.com/",
+    "sections": [
+      {
+        "code": "html, body, main, .Box-sc-g0xbh4-0, .color-bg-default, .hide-sm {\n    background-color: #000000 !important\n}\n\nheader, .Box, .ContributionCalendar-day[data-level=\"0\"] {\n    background-color: #070707 !important    \n}\n\n@media (prefers-color-scheme: dark) {\n      [data-color-mode=\"auto\"][data-dark-theme=\"dark\"], [data-color-mode=\"auto\"][data-dark-theme=\"dark\"] ::backdrop {\n        --bgColor-default: #000000;\n        --bgColor-muted: #171717;\n    }\n}",
+        "urlPrefixes": [
+          "https://github.com/"
+        ]
+      }
+    ],
+    "updateDate": 1747407263850,
+    "_id": "12b7043c-4845-46f7-9ef9-ca23a5c52c3b",
+    "_rev": 1747409873237,
+    "id": 5
+  },
+  {
+    "enabled": true,
+    "installDate": 1747409982434,
+    "name": "chatgpt.com/",
+    "sections": [
+      {
+        "code": "html, body {\n    background-color: #000;\n}\n\n.bg-token-bg-elevated-secondary {\n    background-color: #0f0f0f;\n}\n\n@layer base {\n    .dark {\n        --main-surface-primary: #000000;\n        --sidebar-surface-primary: #0f0f0f;\n        --message-surface: #0f0f0f\n    }\n}\n\n@layer utilities {\n  .dark\\:bg-\\[\\#303030\\]:is(.dark *) {\n    background-color: #171717;\n  }\n}\n\n@layer utilities {\n  .dark\\:bg-token-main-surface-secondary:is(.dark *) {\n    background-color: #0f0f0f;\n  }\n}\n\n.markdown hr {\n    background-color: #171717;\n}\n\nmarkdown tr:not(:last-child) td,\nmarkdown tr:not(:last-child) td {\n  border-color: #fff;\n}\n\n@layer base {\n  *, ::backdrop, ::after, ::before {\n    border-color: #474747;\n  }\n}",
+        "urlPrefixes": [
+          "https://chatgpt.com/"
+        ]
+      }
+    ],
+    "updateDate": 1747411921918,
+    "_id": "0573a646-194c-4079-bfb3-3727a76ffe53",
+    "_rev": 1747411921918,
+    "id": 6
+  }
+]
