@@ -1,3 +1,4 @@
+require 'configs.firenvim'
 require 'configs.remaps'
 require 'configs.lazy'
 require 'configs.opts'
