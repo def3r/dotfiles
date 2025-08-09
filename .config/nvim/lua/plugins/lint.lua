@@ -1,5 +1,4 @@
 return {
-
   { -- Linting
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -47,6 +46,9 @@ return {
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
+          if vim.bo.buftype ~= '' or vim.bo.filetype ~= 'markdown' then
+            return
+          end
           lint.try_lint()
         end,
       })
