@@ -22,7 +22,7 @@ local function exec_duckdb_current_file()
   end
 
   -- open floating terminal running DuckDB
-  local term_cmd = string.format('duckdb %s', db_path)
+  local term_cmd = string.format('duckdb -f %s\nduckdb %s', file, db_path)
   local buf = vim.api.nvim_create_buf(false, true)
   local win_config = utils.get_default_win_config()
   win_config.border = 'single'
@@ -31,7 +31,8 @@ local function exec_duckdb_current_file()
   utils.state.floating = { buf = buf, win = win }
 
   local job_id = vim.fn.termopen(term_cmd, { detach = true })
-  vim.cmd 'startinsert'
+  -- Dont start insert
+  -- vim.cmd 'startinsert'
 end
 
 vim.keymap.set('n', '<leader>ddb', exec_duckdb_current_file, { desc = '[D]uck[D][B]' })
