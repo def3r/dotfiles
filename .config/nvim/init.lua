@@ -9,5 +9,7 @@ require 'configs.duckdb'
 vim.g.have_nerd_font = true
 vim.g.netrw_banner = 0
 
+Trans()
+
 -- TODO:
 -- Left behind from legacy config: java (jdtls) config
