@@ -1,0 +1,27 @@
+#!/bin/bash
+
+WALLPAPER_DIR=~/Downloads/wallpapers/
+cd $WALLPAPER_DIR
+count=$(ls -1 | wc -l)
+rdm=$((RANDOM % (count + 1)))
+FILE=$(ls -1 | sed -n "${rdm}p" | tr -d \\n)
+
+if [[ $1 == "dir" ]]; then
+  dolphin $WALLPAPER_DIR 2>&1 1>/dev/null &
+  exit 0
+elif [[ $1 == "uwu" ]]; then
+  FILE="uwu-arch-linux-5k-wd.jpg"
+fi
+
+echo RandWall @ $WALLPAPER_DIR
+echo $FILE
+
+dbus-send --session --dest=org.kde.plasmashell --type=method_call \
+  /PlasmaShell org.kde.PlasmaShell.evaluateScript "string:
+var Desktops = desktops();
+for (i=0;i<Desktops.length;i++) {
+        d = Desktops[i];
+        d.wallpaperPlugin = \"org.kde.image\";
+        d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");
+        d.writeConfig(\"Image\", \"file:///${WALLPAPER_DIR}/${FILE}\");
+}"
