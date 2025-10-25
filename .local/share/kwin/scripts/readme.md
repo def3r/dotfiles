@@ -1,0 +1,2 @@
+- [krohnkite](https://github.com/esjeon/krohnkite)
+- [truely maximized](https://github.com/fin444/truely-maximized)
