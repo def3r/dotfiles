@@ -7,6 +7,10 @@ if status is-interactive
 
     set -U fish_user_paths $fish_user_paths ~/.scripts
     set -Ux VIRTUAL_ENV_DISABLE_PROMPT 1
+
+    set -x PATH /opt/cuda/bin $PATH
+    set -x LD_LIBRARY_PATH /opt/cuda/lib64 $LD_LIBRARY_PATH
+    set -x NVCC_CCBIN /usr/bin/g++-14
 end
 
 function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
@@ -41,3 +45,6 @@ function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
   # set -x color_desk                     005faf cccccc --bold
   # set -x color_nix                      005faf cccccc --bold
 end
+
+# Generated for envman. Do not edit.
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
