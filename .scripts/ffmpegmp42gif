@@ -1,0 +1,1 @@
+ffmpeg -i input.mp4 -filter_complex "[0:v]fps=20:round=zero,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 output.gif

@@ -90,3 +90,9 @@ vim.keymap.set('n', '<leader>man', function()
     sections = { 'ALL' },
   }
 end, { desc = '[MAN] pages' })
+
+-- treesj
+-- vim.keymap.set('n', '<leader>=', require('treesj').toggle)
+-- vim.keymap.set('n', '<leader>_', function()
+--   require('treesj').toggle { split = { recursive = true } }
+-- end)

@@ -2,12 +2,12 @@ local M = {}
 
 M.servers = {
   'lua_ls',
-  'clangd'
+  'clangd',
 }
 
 M.settings = {
   lua_ls = {},
-  clangd = {}
+  clangd = {},
 }
 
 return M

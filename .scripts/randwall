@@ -5,16 +5,63 @@ cd $WALLPAPER_DIR
 count=$(ls -1 | wc -l)
 rdm=$((RANDOM % (count + 1)))
 FILE=$(ls -1 | sed -n "${rdm}p" | tr -d \\n)
+FIT=1
 
 if [[ $1 == "dir" ]]; then
   dolphin $WALLPAPER_DIR 2>&1 1>/dev/null &
   exit 0
 elif [[ $1 == "uwu" ]]; then
   FILE="uwu-arch-linux-5k-wd.jpg"
+elif [[ $1 == "php" ]]; then
+  FILE="phpgrandma.png"
+  FIT=2
 fi
 
 echo RandWall @ $WALLPAPER_DIR
 echo $FILE
+
+if [[ $1 == "fill" ]]; then
+  FIT=2
+  dbus-send --session --dest=org.kde.plasmashell --type=method_call \
+    /PlasmaShell org.kde.PlasmaShell.evaluateScript \
+    "string:
+var Desktops = desktops();
+for (i = 0; i < Desktops.length; i++) {
+    d = Desktops[i];
+    d.wallpaperPlugin = \"org.kde.image\";
+    d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");
+    d.writeConfig(\"FillMode\", $FIT);
+}"
+  exit
+elif [[ $1 == "fit" ]]; then
+  dbus-send --session --dest=org.kde.plasmashell --type=method_call \
+    /PlasmaShell org.kde.PlasmaShell.evaluateScript \
+    "string:
+var Desktops = desktops();
+for (i = 0; i < Desktops.length; i++) {
+    d = Desktops[i];
+    d.wallpaperPlugin = \"org.kde.image\";
+    d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");
+    d.writeConfig(\"FillMode\", $FIT);
+}"
+  exit
+fi
+
+if [[ $2 == "fill" ]]; then
+  FIT=2
+fi
+
+# dbus-send --session --dest=org.kde.plasmashell --type=method_call \
+#   /PlasmaShell org.kde.PlasmaShell.evaluateScript "string:
+# var Desktops = desktops();
+# for (i=0;i<Desktops.length;i++) {
+#         d = Desktops[i];
+#         d.wallpaperPlugin = \"org.kde.image\";
+#         d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");
+#         d.writeConfig(\"Image\", \"file:///${WALLPAPER_DIR}/${FILE}\");
+# }"
+
+COLOR=$(magick $WALLPAPER_DIR/$FILE -format %c -depth 8 -scale 144x144 histogram:info:- | sort -n | tail -1 | grep -o '#......')
 
 dbus-send --session --dest=org.kde.plasmashell --type=method_call \
   /PlasmaShell org.kde.PlasmaShell.evaluateScript "string:
@@ -24,4 +71,6 @@ for (i=0;i<Desktops.length;i++) {
         d.wallpaperPlugin = \"org.kde.image\";
         d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");
         d.writeConfig(\"Image\", \"file:///${WALLPAPER_DIR}/${FILE}\");
+        d.writeConfig(\"FillMode\", ${FIT});
+        d.writeConfig(\"Color\", \"${COLOR}\");
 }"

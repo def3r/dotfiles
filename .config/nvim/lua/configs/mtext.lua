@@ -51,7 +51,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
       MTextRunServer()
     end
 
-    print(args.file)
+    if #args.file < 30 then
+      print(args.file)
+    end
     vim.system({ 'nc', '-c', 'localhost', '6767' }, { stdin = args.file })
   end,
 })
