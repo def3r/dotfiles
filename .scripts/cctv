@@ -1,0 +1,36 @@
+#!/bin/sh
+
+DVR_FILE=".dvrmac"
+DVR_ENV=$(cat $DVR_FILE)
+DVR_MAC=$(echo $DVR_ENV | awk "{print \$1}")
+DVR_USR=$(echo $DVR_ENV | awk "{print \$2}")
+DVR_PWD=$(echo $DVR_ENV | awk "{print \$3}")
+
+CHAN_MEM=0
+CHAN[0]=0
+CHAN[1]=0
+CHAN[2]=0
+
+if [[ $0 == '1' ]]; then
+  CHAN[0]=1
+  CHAN_MEM+=1
+fi
+if [[ $1 == '2' ]]; then
+  CHAN[1]=1
+  CHAN_MEM+=1
+fi
+if [[ $2 == '3' ]]; then
+  CHAN[2]=1
+  CHAN_MEM+=1
+fi
+if [ ${CHAN_MEM} -eq 0 ]; then
+  CHAN[0]=1
+fi
+
+DVR_IP=$(ip neigh | grep "$DVR_MAC" | awk "{print \$1}")
+
+for i in $(seq 0 3); do
+  if [[ ${CHAN[$i]} == 1 ]]; then
+    ffplay "rtsp://$DVR_USR:$DVR_PWD@$DVR_IP:554/cam/realmonitor?channel=$(echo ${i} + 1 | bc)&subtype=0" &>/dev/null & disown;
+  fi
+done
