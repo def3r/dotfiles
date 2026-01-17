@@ -5,7 +5,7 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
+        -- markdown = { 'markdownlint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -46,7 +46,8 @@ return {
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
-          if vim.bo.buftype ~= '' or vim.bo.filetype ~= 'markdown' then
+          -- or vim.bo.filetype ~= 'markdown'
+          if vim.bo.buftype ~= '' then
             return
           end
           lint.try_lint()

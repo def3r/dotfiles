@@ -1,0 +1,49 @@
+{
+    "include": [
+      "~/.config/waybar/modules/custom/dividers.jsonc",
+      "~/.config/waybar/modules/custom/distro.jsonc",
+      "~/.config/waybar/modules/custom/user.jsonc",
+    ],
+
+    "custom/sep#1": {
+      "format": "",
+      "tooltip": false
+    },
+
+    "custom/full_block#1": {
+      "format": "█",
+      "tooltip": false
+    },
+
+    "custom/heavy_left_open#1": {
+      "format": "❰",
+      "tooltip": false
+    },
+
+    "custom/heavy_left_close#1": {
+      "format": "❱",
+      "tooltip": false
+    },
+
+    "height": 0,
+    "width": 0,
+    "margin": 0,
+    "layer": "top",
+    "position": "top",
+    "fixed-center": true,
+    "reload_style_on_change": true,
+
+    "modules-left": ["group/user",
+      "hyprland/workspaces",
+      "custom/heavy_left_open#1",
+      "hyprland/window",
+      "custom/heavy_left_close#1"
+    ],
+
+    "modules-center": [
+      "custom/sep#1", "clock"
+      // "temperature", "memory", "cpu"
+    ],
+
+    "modules-right": ["pulseaudio", "network", "battery", "bluetooth"],
+}

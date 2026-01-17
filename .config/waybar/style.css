@@ -1,0 +1,47 @@
+* {
+    font-family: "CommitMono Nerd Font Mono", monospace;
+    font-size: 14px;
+    padding: 1px 2px;
+}
+
+#waybar {
+    background: rgba(13, 13, 13, 0.5);
+}
+
+#custom-heavy_left_open.1,
+#custom-heavy_left_close.1,
+#window {
+    color: #babbf1;
+}
+
+#workspaces button {
+    border-radius: 4px;
+    background-color: #171717;
+    padding: 0 2px;
+    margin: 0 1px;
+}
+
+#workspaces button.active {
+	  background-color: #282C34;
+}
+#workspaces button.active label,
+#workspaces button.focused label {
+    color: #babbf1;
+}
+
+#custom-sep.1,
+#custom-full_block.1 {
+    color: #8666c4;
+}
+
+#clock {
+    color: #babbf1;
+}
+
+#memory {
+    color: #db4f4f;
+}
+
+#battery {
+    color: #dda15e;
+}
