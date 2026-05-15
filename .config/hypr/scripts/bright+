@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+if ! [ -x "$(command -v brightnessctl)" ]; then
+    notify-send "no brightnessctl"
+    exit 1
+fi
+
+brightnessctl set +10%
