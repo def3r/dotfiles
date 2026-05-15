@@ -1,23 +1,26 @@
-# Not a forceful SymLinkin
+# a forceful SymLinkin
 
 dotfiles="$PWD"
 dest="$HOME"
 mkdir -p backup/
 
-ln -s $dotfiles/.config/alacritty $dest/.config/alacritty
+ln -sf $dotfiles/.config/alacritty $dest/.config/alacritty
 
 if [[ -d "$dest/.config/fish" ]]; then
   rm -rf backup/fish
   mv "$dest/.config/fish" backup/
   rm -rf "$dest/.config/fish"
 fi
-ln -s $dotfiles/.config/fish $dest/.config/fish
+ln -sf $dotfiles/.config/fish $dest/.config/fish
 
-ln -s $dotfiles/.config/gh $dest/.config/gh
-ln -s $dotfiles/.config/nvim $dest/.config/nvim
-ln -s $dotfiles/.config/omf $dest/.config/omf
+ln -sf $dotfiles/.config/gh   $dest/.config/gh
+ln -sf $dotfiles/.config/nvim $dest/.config/nvim
+ln -sf $dotfiles/.config/omf  $dest/.config/omf
 
-ln -s "$dotfiles/.bashrc" "$dest/.bashrc"
-ln -s "$dotfiles/.tmux.conf" "$dest/.tmux.conf"
-ln -s "$dotfiles/.vimrc" "$dest/.vimrc"
-ln -s "$dotfiles/.zshrc" "$dest/.zshrc"
+ln -sf $dotfiles/.config/hypr/scripts $dest/.config/hypr/scripts
+ln -sf $dotfiles/.config/hypr/hyprland.conf $dest/.config/hypr/hyprland.conf
+
+ln -sf "$dotfiles/.bashrc"    "$dest/.bashrc"
+ln -sf "$dotfiles/.tmux.conf" "$dest/.tmux.conf"
+ln -sf "$dotfiles/.vimrc"     "$dest/.vimrc"
+ln -sf "$dotfiles/.zshrc"     "$dest/.zshrc"
