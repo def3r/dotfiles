@@ -11,7 +11,7 @@ x = 10
 y = 10
 
 [font]
-size = 13.0
+size = 11.0
 
 [font.normal]
 family = "CommitMono Nerd Font Mono"

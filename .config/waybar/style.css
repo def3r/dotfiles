@@ -22,7 +22,7 @@
 }
 
 #workspaces button.active {
-	  background-color: #282C34;
+    background-color: #282C34;
 }
 #workspaces button.active label,
 #workspaces button.focused label {
@@ -39,9 +39,29 @@
 }
 
 #memory {
-    color: #db4f4f;
+    color: #dbffdb;
 }
 
 #battery {
     color: #dda15e;
+}
+
+#bluetooth.connected {
+    color: #aaaaff;
+}
+
+#pulseaudio {
+    color: #aaffaa;
+}
+
+#network {
+    color: #ffaaaa;
+}
+
+#temperature {
+    color: #ffffaa;
+}
+
+#cpu {
+    color: #ffaaff;
 }

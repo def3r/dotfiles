@@ -6,7 +6,7 @@
     ],
 
     "custom/sep#1": {
-      "format": "",
+      "format": " ",
       "tooltip": false
     },
 
@@ -33,7 +33,8 @@
     "fixed-center": true,
     "reload_style_on_change": true,
 
-    "modules-left": ["group/user",
+    "modules-left": [
+      "group/user",
       "hyprland/workspaces",
       "custom/heavy_left_open#1",
       "hyprland/window",
@@ -41,9 +42,75 @@
     ],
 
     "modules-center": [
-      "custom/sep#1", "clock"
-      // "temperature", "memory", "cpu"
+      "clock",
     ],
 
-    "modules-right": ["pulseaudio", "network", "battery", "bluetooth"],
+    "modules-right": [
+      "temperature", "memory", "cpu",
+      "pulseaudio",
+      "network",
+      "battery",
+      "bluetooth",
+      "custom/sep#1",
+    ],
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "nil",
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "{usage}%  ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{}%  "
+    },
+
+    "temperature": {
+      "format": "{temperatureC}°C  ",
+    },
+
+    "bluetooth": {
+      "format": "", // no need for no-connetions
+      "format-connected": " {num_connections} connected",
+      "on-click": "blueman-manager"
+    },
 }

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+PID=$(pgrep waybar)
+if [[ -z "$PID" ]]; then
+  waybar &
+else
+  kill $PID
+fi
