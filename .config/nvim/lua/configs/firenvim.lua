@@ -1,6 +1,10 @@
 vim.g.firenvim_config = {
   localSettings = {
     ['https://discord.com/.*'] = { takeover = 'never', priority = 1 },
+    ['https://gemini.google.com/*'] = { takeover = 'never', priority = 1 },
+    ['https://claude.ai/*'] = { takeover = 'never', priority = 1 },
+    ['https://github.com/*'] = { takeover = 'never', priority = 1 },
+    ['https://web.whatsapp.com/*'] = { takeover = 'never', priority = 1 },
   },
 }
 

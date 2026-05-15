@@ -2,7 +2,7 @@
 term = "xterm-256color"
 
 [window]
-decorations = "None"
+# decorations = "None"
 opacity = 0.9
 # blur = true
 

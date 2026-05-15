@@ -1,17 +1,17 @@
-local lsp = require("configs.lsp")
+local lsp = require 'configs.lsp'
 
 return {
   {
-    "mason-org/mason.nvim",
+    'mason-org/mason.nvim',
     opts = {},
-    config = true
+    config = true,
   },
 
   {
-    "mason-org/mason-lspconfig.nvim",
+    'mason-org/mason-lspconfig.nvim',
     opts = {
       ensure_installed = lsp.servers,
     },
     -- automatic_enable = false,
-  }
+  },
 }

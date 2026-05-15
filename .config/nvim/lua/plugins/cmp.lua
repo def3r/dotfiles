@@ -1,3 +1,23 @@
+-- return {
+--   'saghen/blink.cmp',
+--   dependencies = { 'rafamadriz/friendly-snippets' },
+--   version = '1.*',
+--   ---@module 'blink.cmp'
+--   ---@type blink.cmp.Config
+--   opts = {
+--     keymap = { preset = 'default' },
+--     appearance = {
+--       nerd_font_variant = 'normal',
+--     },
+--     completion = { documentation = { auto_show = true } },
+--     sources = {
+--       default = { 'lsp', 'path', 'snippets', 'buffer' },
+--     },
+--     fuzzy = { implementation = 'prefer_rust_with_warning' },
+--   },
+--   opts_extend = { 'sources.default' },
+-- }
+
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -36,6 +56,8 @@ return {
     'hrsh7th/cmp-path',
     'luckasRanarison/tailwind-tools.nvim',
     'onsails/lspkind-nvim',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
   },
 
   opts = function()
@@ -60,11 +82,13 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
+
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
-      completion = { completeopt = 'menu,menuone,noinsert' },
+
+      completion = { completeopt = 'menu,menuone,noinsert,popup' },
 
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
@@ -118,6 +142,7 @@ return {
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
+
       sources = {
         {
           name = 'lazydev',
@@ -129,5 +154,24 @@ return {
         { name = 'path' },
       },
     }
+
+    -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' },
+      },
+    })
+
+    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' },
+      }, {
+        { name = 'cmdline' },
+      }),
+      matching = { disallow_symbol_nonprefix_matching = false },
+    })
   end,
 }

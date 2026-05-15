@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WALLPAPER_DIR=~/Downloads/wallpapers/
+WALLPAPER_DIR=~/Downloads/wallpapers
 cd $WALLPAPER_DIR
 count=$(ls -1 | wc -l)
 rdm=$((RANDOM % (count + 1)))
@@ -17,8 +17,37 @@ elif [[ $1 == "vim" ]]; then
 elif [[ $1 == "php" ]]; then
   FILE="phpgrandma.png"
   FIT=2
+elif [[ $1 == "chad" ]]; then
+  FILE="G8VhLwda4AIegIs.jpg"
+elif [[ $1 == "archangelo" ]]; then
+  FILE="lnuxangelo.jpg"
+  FIT=2
+elif [[ $1 == "nvim" ]]; then
+  FILE="wallhaven-e87wgr.png"
+elif [[ $1 == "sucks" ]]; then
+  FILE="HBOBWlab0AAa0u_.jpg"
+elif [[ $1 == "urbannaxal" ]]; then
+  FILE="pollution-vs-police-v0-10e8tcamu83g1.webp"
+  FIT=2
+elif [[ $1 == "regex" ]]; then
+  FILE="regex.png"
+elif [[ $1 == "macroslop" ]]; then
+  FILE="macroslop.webp"
+elif [[ $1 == "irony" ]]; then
+  FILE="irony.png"
+elif [[ $1 == "terminal" ]]; then
+  FILE="terminalinyourvimandviminyourterminal.jpg"
+elif [[ $1 == "me" ]]; then
+  FILE="Screenshot_20241225_012635.png"
+  FIT=2
+elif [[ $1 == "chud" ]]; then
+  FILE="chud.jpg"
+elif [[ $1 == "home" ]]; then
+  FILE="home.jpeg"
+elif [[ $1 == "consume" ]]; then
+  FILE="consume.jpeg"
 elif [[ $1 == "n" ]]; then
-  FILE="wallhaven-21yd3m.jpg"
+  FILE="Screenshot_20250314_164229.png"
   FIT=2
 fi
 

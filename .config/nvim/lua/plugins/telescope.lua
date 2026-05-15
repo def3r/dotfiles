@@ -1,8 +1,8 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    -- or                              , branch = '0.1.x',
+    -- branch = 'master',
+    -- or tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
@@ -20,6 +20,7 @@ return {
             'raylib/',
             '.git/',
           },
+          theme = 'dropdown',
         },
 
         extensions = {
@@ -31,13 +32,16 @@ return {
         pickers = {
           find_files = {
             hidden = true,
+            theme = 'dropdown',
           },
         },
 
         live_grep = {
           find_files = {
             hidden = true,
+            -- gitignore = false,
           },
+          theme = 'dropdown',
         },
       }
       -- To get ui-select loaded and working with telescope, you need to call

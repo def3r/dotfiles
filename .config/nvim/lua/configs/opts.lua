@@ -29,10 +29,12 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
-vim.lsp.set_log_level 'off'
+vim.lsp.log.set_level 'off'
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.wildignore:append { '*/node_modules/*' }
+
+vim.opt.termguicolors = true

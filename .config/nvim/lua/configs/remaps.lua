@@ -6,7 +6,6 @@ local newTerminal = function(horizontal)
   end
   vim.opt.number = false
   vim.opt.relativenumber = false
-  vim.fn.chansend(vim.bo.channel, 'fish\r\nclear\n')
   vim.cmd 'startinsert'
 end
 
@@ -81,10 +80,13 @@ vim.keymap.set('n', '<leader>u', function()
   vim.cmd.UndotreeFocus()
 end, { desc = '[U]ndotree toggle' })
 
-vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+-- vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
 
+vim.keymap.set('n', '<leader>ts', function()
+  vim.cmd 'Telescope'
+end, { desc = 'Telescope' })
 vim.keymap.set('n', '<leader>man', function()
   require('telescope.builtin').man_pages {
     sections = { 'ALL' },

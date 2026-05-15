@@ -8,6 +8,7 @@ M.servers = {
 M.settings = {
   lua_ls = {},
   clangd = {},
+  c3_lsp = { filetypes = { 'c3' } },
 }
 
 return M
