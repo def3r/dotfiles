@@ -18,6 +18,9 @@ ln -sf $dotfiles/.config/nvim $dest/.config/nvim
 ln -sf $dotfiles/.config/omf  $dest/.config/omf
 ln -sf $dotfiles/.config/waybar  $dest/.config/waybar
 
+ln -sf $dotfiles/.scripts        $dest/.scripts
+echo "- Add ${dest}/.scripts to path env"
+
 ln -sf $dotfiles/.config/hypr/scripts       $dest/.config/hypr/scripts
 ln -sf $dotfiles/.config/hypr/hyprland.conf $dest/.config/hypr/hyprland.conf
 

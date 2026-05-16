@@ -10,12 +10,12 @@ if status is-interactive
 
     set -x PATH /opt/cuda/bin $PATH
     set -x PATH /opt/nvim-linux-x86_64/bin $PATH
-    set -x PATH /home/asbestos/part8/usr/ $PATH
+    set -x PATH /home/def3r/part8/usr/ $PATH
     set -x LD_LIBRARY_PATH /opt/cuda/lib64 $LD_LIBRARY_PATH
     set -x NVCC_CCBIN /usr/bin/g++-14
 
     # llvm shi
-    set -x LLVM_PROJECT /home/asbestos/part8/llvm
+    set -x LLVM_PROJECT /home/def3r/part8/llvm
     set -x LD_LIBRARY_PATH $LLVM_PROJECT/install/lib $LD_LIBRARY_PATH
     set -x LIBRARY_PATH $LLVM_PROJECT/install/lib $LIBRARY_PATH
 end

@@ -124,5 +124,9 @@ if [[ $2 == "fill" ]]; then
   FIT=2
 fi
 
-COLOR=$(magick $WALLPAPER_DIR/$FILE -format %c -depth 8 -scale 144x144 histogram:info:- | sort -n | tail -1 | grep -o '#......')
+if [[ "$DE" == "Hyprland" ]]; then
+  COLOR="COLOR"
+else
+  COLOR=$(magick $WALLPAPER_DIR/$FILE -format %c -depth 8 -scale 144x144 histogram:info:- | sort -n | tail -1 | grep -o '#......')
+fi
 change_wallpaper
