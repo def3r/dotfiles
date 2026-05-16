@@ -1,5 +1,19 @@
 #!/bin/bash
 
+function save_wallpaper() {
+  echo -e "$WALLPAPER_DIR/$FILE\n$FIT" > $SAVE_FILE
+}
+
+function restore_wallpaper() {
+  GET_WALLPAPER=$(sed -n '1p' "$SAVE_FILE")
+  GET_FIT=$(sed -n '2p' "$SAVE_FILE")
+}
+
+function save_fit() {
+  restore_wallpaper
+  echo -e "$GET_WALLPAPER\n$FIT" > $SAVE_FILE
+}
+
 function kde_wallpaper() {
   STRING="string:
   var Desktops = desktops();
@@ -12,6 +26,7 @@ function kde_wallpaper() {
     d.writeConfig(\"FillMode\", ${FIT});
   }"
 
+  SAVE=1
   if [[ -z "$COLOR" ]]; then
     STRING="string:
     var Desktops = desktops();
@@ -21,10 +36,18 @@ function kde_wallpaper() {
       d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");
       d.writeConfig(\"FillMode\", $FIT);
     }"
+    SAVE=0
   fi
 
   dbus-send --session --dest=org.kde.plasmashell --type=method_call \
     /PlasmaShell org.kde.PlasmaShell.evaluateScript "${STRING}"
+  STATUS=$(echo $?)
+  if [ $STATUS -ne 0 ]; then
+    return
+  fi
+  if [ $SAVE -eq 1 ]; then
+    save_wallpaper
+  fi
 }
 
 # No bg color to set with hyprpaper :(
@@ -36,14 +59,24 @@ function hyprland_wallpaper() {
   fi
 
   WALLPAPER="$WALLPAPER_DIR/$FILE"
+  SAVE=1
   if [[ -z "$COLOR" ]]; then
     WALLPAPER=$(hyprctl hyprpaper listactive | awk '{print $NF}')
+    SAVE=0
   fi
 
   if [[ "$FIT" == "2" ]]; then
     hyprctl hyprpaper wallpaper ",$WALLPAPER,fill"
+    STATUS=$(echo $?)
   else
     hyprctl hyprpaper wallpaper ",$WALLPAPER,contain"
+    STATUS=$(echo $?)
+  fi
+  if [ $STATUS -ne 0 ]; then
+    return
+  fi
+  if [ $SAVE -eq 1 ]; then
+    save_wallpaper
   fi
 }
 
@@ -55,7 +88,55 @@ function change_wallpaper() {
   fi
 }
 
+function map_wallpaper() {
+  if [[ $1 == "dir" ]]; then
+    dolphin $WALLPAPER_DIR 2>&1 1>/dev/null &
+    exit 0
+  elif [[ $1 == "uwu" ]]; then
+    FILE="uwu-arch-linux-5k-wd.jpg"
+  elif [[ $1 == "vim" ]]; then
+    FILE="Screenshot 2025-10-26 at 21-19-22 ³(8) Musician turned Programmer turned Musician - YouTube.png"
+  elif [[ $1 == "php" ]]; then
+    FILE="phpgrandma.png"
+    FIT=2
+  elif [[ $1 == "chad" ]]; then
+    FILE="G8VhLwda4AIegIs.jpg"
+  elif [[ $1 == "archangelo" ]]; then
+    FILE="lnuxangelo.jpg"
+    FIT=2
+  elif [[ $1 == "nvim" ]]; then
+    FILE="wallhaven-e87wgr.png"
+  elif [[ $1 == "sucks" ]]; then
+    FILE="HBOBWlab0AAa0u_.jpg"
+  elif [[ $1 == "urbannaxal" ]]; then
+    FILE="pollution-vs-police-v0-10e8tcamu83g1.webp"
+    FIT=2
+  elif [[ $1 == "regex" ]]; then
+    FILE="regex.png"
+  elif [[ $1 == "macroslop" ]]; then
+    FILE="macroslop.webp"
+  elif [[ $1 == "irony" ]]; then
+    FILE="irony.png"
+  elif [[ $1 == "terminal" ]]; then
+    FILE="terminalinyourvimandviminyourterminal.jpg"
+  elif [[ $1 == "me" ]]; then
+    FILE="Screenshot_20241225_012635.png"
+    FIT=2
+  elif [[ $1 == "chud" ]]; then
+    FILE="chud.jpg"
+  elif [[ $1 == "home" ]]; then
+    FILE="home.jpeg"
+  elif [[ $1 == "consume" ]]; then
+    FILE="consume.jpeg"
+  elif [[ $1 == "n" ]]; then
+    FILE="Screenshot_20250314_164229.png"
+    FIT=2
+  fi
+
+}
+
 WALLPAPER_DIR=~/wallpapers
+SAVE_FILE=~/.randwall
 cd $WALLPAPER_DIR
 count=$(ls -1 | wc -l)
 rdm=$((RANDOM % (count + 1)))
@@ -64,65 +145,31 @@ FIT=1
 COLOR=""
 DE=$XDG_CURRENT_DESKTOP
 
-if [[ $1 == "dir" ]]; then
-  dolphin $WALLPAPER_DIR 2>&1 1>/dev/null &
-  exit 0
-elif [[ $1 == "uwu" ]]; then
-  FILE="uwu-arch-linux-5k-wd.jpg"
-elif [[ $1 == "vim" ]]; then
-  FILE="Screenshot 2025-10-26 at 21-19-22 ³(8) Musician turned Programmer turned Musician - YouTube.png"
-elif [[ $1 == "php" ]]; then
-  FILE="phpgrandma.png"
+if [[ $1 == "fill" ]]; then
   FIT=2
-elif [[ $1 == "chad" ]]; then
-  FILE="G8VhLwda4AIegIs.jpg"
-elif [[ $1 == "archangelo" ]]; then
-  FILE="lnuxangelo.jpg"
-  FIT=2
-elif [[ $1 == "nvim" ]]; then
-  FILE="wallhaven-e87wgr.png"
-elif [[ $1 == "sucks" ]]; then
-  FILE="HBOBWlab0AAa0u_.jpg"
-elif [[ $1 == "urbannaxal" ]]; then
-  FILE="pollution-vs-police-v0-10e8tcamu83g1.webp"
-  FIT=2
-elif [[ $1 == "regex" ]]; then
-  FILE="regex.png"
-elif [[ $1 == "macroslop" ]]; then
-  FILE="macroslop.webp"
-elif [[ $1 == "irony" ]]; then
-  FILE="irony.png"
-elif [[ $1 == "terminal" ]]; then
-  FILE="terminalinyourvimandviminyourterminal.jpg"
-elif [[ $1 == "me" ]]; then
-  FILE="Screenshot_20241225_012635.png"
-  FIT=2
-elif [[ $1 == "chud" ]]; then
-  FILE="chud.jpg"
-elif [[ $1 == "home" ]]; then
-  FILE="home.jpeg"
-elif [[ $1 == "consume" ]]; then
-  FILE="consume.jpeg"
-elif [[ $1 == "n" ]]; then
-  FILE="Screenshot_20250314_164229.png"
-  FIT=2
+  change_wallpaper
+  save_fit
+  exit
+elif [[ $1 == "fit" ]]; then
+  change_wallpaper
+  save_fit
+  exit
+fi
+
+if [[ "$1" == "restore" ]]; then
+  restore_wallpaper
+  WALLPAPER_DIR=$(dirname "$GET_WALLPAPER")
+  FILE=$(basename "$GET_WALLPAPER")
+  FIT=$GET_FIT
+else
+  map_wallpaper "$1"
+  if [[ $2 == "fill" ]]; then
+    FIT=2
+  fi
 fi
 
 echo RandWall @ $WALLPAPER_DIR
 echo $FILE
-
-if [[ $1 == "fill" ]]; then
-  FIT=2
-  change_wallpaper
-  exit
-elif [[ $1 == "fit" ]]; then
-  change_wallpaper
-  exit
-fi
-
-if [[ $2 == "fill" ]]; then
-  FIT=2
-fi
 
 if [[ "$DE" == "Hyprland" ]]; then
   COLOR="COLOR"

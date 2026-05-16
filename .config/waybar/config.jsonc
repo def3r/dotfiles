@@ -60,6 +60,7 @@
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "nil",
+        "on-click": "alacritty -e nmtui"
     },
 
     "pulseaudio": {
