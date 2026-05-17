@@ -72,8 +72,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "default": ["", "", ""]
@@ -110,7 +110,7 @@
     },
 
     "bluetooth": {
-      "format": "", // no need for no-connetions
+      "format": " nil", // no need for no-connetions
       "format-connected": " {num_connections} connected",
       "on-click": "blueman-manager"
     },

@@ -15,7 +15,7 @@ if status is-interactive
     set -x NVCC_CCBIN /usr/bin/g++-14
 
     # llvm shi
-    set -x LLVM_PROJECT /home/def3r/part8/llvm
+    set -x LLVM_PROJECT /home/def3r/def3r/llvm-project
     set -x LD_LIBRARY_PATH $LLVM_PROJECT/install/lib $LD_LIBRARY_PATH
     set -x LIBRARY_PATH $LLVM_PROJECT/install/lib $LIBRARY_PATH
 end
