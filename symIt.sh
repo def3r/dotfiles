@@ -51,6 +51,7 @@ link .config/omf
 link .config/waybar
 link .config/kitty/kitty.conf
 link .config/alacritty
+link .config/qutebrowser/config.py
 
 # hypr
 link .config/hypr/scripts
