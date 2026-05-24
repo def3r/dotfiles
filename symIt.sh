@@ -1,40 +1,68 @@
-# a forceful SymLinkin
+#!/bin/sh
+
+# symIt
+# Not a forceful SymLinkin
+
+function env_msg {
+  status=$(echo ":$PATH:" | grep ":${dest}/${1}:")
+  if [[ -z "$status" ]]; then
+    echo "- Add ${dest}/${1} to path env"
+  fi
+}
+
+function link {
+  ln $flag "$dotfiles/$1" "$dest/$1"
+  if [ $? -ne 0 ]; then
+    return
+  fi
+
+  if [[ "$2" == "env" ]]; then
+    env_msg $1
+  fi
+}
+
+function init {
+  mkdir -p ~/.config/
+  mkdir -p backup/
+}
 
 dotfiles="$PWD"
 dest="$HOME"
-mkdir -p backup/
+flag=-s
 
-ln -sf $dotfiles/.config/alacritty $dest/.config/alacritty
+init
+
+if [[ "$1" == "-f" ]]; then
+  flag=-sf
+elif [[ "$1" == "--force" ]]; then
+  flag=-sf
+fi
 
 if [[ -d "$dest/.config/fish" ]]; then
   rm -rf backup/fish
   mv "$dest/.config/fish" backup/
   rm -rf "$dest/.config/fish"
 fi
-ln -sf $dotfiles/.config/fish $dest/.config/fish
+link .config/fish
 
-ln -sf $dotfiles/.config/gh      $dest/.config/gh
-ln -sf $dotfiles/.config/nvim    $dest/.config/nvim
-ln -sf $dotfiles/.config/omf     $dest/.config/omf
-ln -sf $dotfiles/.config/waybar  $dest/.config/waybar
+link .config/gh
+link .config/nvim
+link .config/omf
+link .config/waybar
+link .config/kitty/kitty.conf
+link .config/alacritty
 
-ln -sf $dotfiles/.scripts        $dest/.scripts
-echo "- Add ${dest}/.scripts to path env"
+# hypr
+link .config/hypr/scripts
+link .config/hypr/hyprland.conf
+link .config/hypr/hypridle.conf
+link .config/hypr/hyprlock.conf
+link .config/hypr/hyprsunset.conf
 
-ln -sf $dotfiles/.config/hypr/scripts       $dest/.config/hypr/scripts
-ln -sf $dotfiles/.config/hypr/hyprland.conf $dest/.config/hypr/hyprland.conf
+link .scripts "env"
 
-ln -sf $dotfiles/.config/hypr/hypridle.conf $dest/.config/hypr/hypridle.conf
-ln -sf $dotfiles/.config/hypr/hypridle.conf /etc/hypr/hypridle.conf
+link .bashrc
+link .tmux.conf
+link .vimrc
+link .zshrc
 
-ln -sf $dotfiles/.config/hypr/hyprlock.conf $dest/.config/hypr/hyprlock.conf
-ln -sf $dotfiles/.config/hypr/hyprlock.conf /etc/hypr/hyprlock.conf
-
-ln -sf $dotfiles/.config/hypr/hyprsunset.conf $dest/.config/hypr/hyprsunset.conf
-ln -sf $dotfiles/.config/hypr/hyprsunset.conf /etc/hypr/hyprsunset.conf
-
-ln -sf "$dotfiles/.bashrc"          "$dest/.bashrc"
-ln -sf "$dotfiles/.tmux.conf"       "$dest/.tmux.conf"
-ln -sf "$dotfiles/.vimrc"           "$dest/.vimrc"
-ln -sf "$dotfiles/.zshrc"           "$dest/.zshrc"
-ln -sf "$dotfiles/kitty/kitty.conf" "$dest/.config/kitty/kitty.conf"
