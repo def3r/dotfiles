@@ -18,6 +18,8 @@ if status is-interactive
     set -x LLVM_PROJECT /home/def3r/def3r/llvm-project
     set -x LD_LIBRARY_PATH $LLVM_PROJECT/install/lib $LD_LIBRARY_PATH
     set -x LIBRARY_PATH $LLVM_PROJECT/install/lib $LIBRARY_PATH
+
+    set -x XDG_CONFIG_HOME $HOME/.config/
 end
 
 function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
