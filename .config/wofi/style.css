@@ -1,0 +1,27 @@
+* {
+    font-family: "CommitMono Nerd Font";
+    font-size: 18px;
+}
+
+window {
+    background-color: rgb(23, 23, 23);
+    border: 1px solid rgb(40, 44, 52);
+    border-radius: 15px;
+    color: rgb(186, 191, 241);
+}
+
+#input {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-color: rgb(40, 44, 52);
+}
+
+#entry:selected {
+    background-color: rgb(186, 191, 241);
+    color: rgb(40, 44, 52);
+}
+#text:selected {
+    color: rgb(40, 44, 52);
+}

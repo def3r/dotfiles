@@ -52,6 +52,7 @@ link .config/waybar
 link .config/kitty/kitty.conf
 link .config/alacritty
 link .config/qutebrowser/config.py
+link .config/wofi
 
 # hypr
 link .config/hypr/scripts
