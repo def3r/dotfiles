@@ -53,6 +53,7 @@ link .config/kitty/kitty.conf
 link .config/alacritty
 link .config/qutebrowser/config.py
 link .config/wofi
+link .config/btop
 
 # hypr
 link .config/hypr/scripts

@@ -52,7 +52,7 @@ def uglytheme():
 
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
-c.tabs.padding = { "bottom": 4, "left": 5, "right": 5, "top": 4 }
+c.tabs.padding = { "bottom": 6, "left": 5, "right": 5, "top": 6 }
 c.tabs.indicator.padding = {"bottom": 2, "left": 0, "right": 4, "top": 2}
 c.statusbar.padding = {"bottom": 4, "left": 0, "right": 0, "top": 4}
 
