@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SESSION_DIR="$HOME/.local/share/qutebrowser/sessions"
+
+if [ ! -d "$SESSION_DIR" ]; then
+    notify-send "Qutebrowser" "Session directory not found."
+    exit 1
+fi
+
+SELECTED_SESSION=$(find "$SESSION_DIR" -name "*.yml" -exec basename {} .yml \; | wofi --dmenu --prompt "Qute Session:")
+
+if [ -n "$SELECTED_SESSION" ]; then
+    qutebrowser -s qt.force_software_rendering chromium --restore "$SELECTED_SESSION"
+fi
