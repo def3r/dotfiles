@@ -15,11 +15,20 @@ if status is-interactive
     set -x NVCC_CCBIN /usr/bin/g++-14
 
     # llvm shi
-    set -x LLVM_PROJECT /home/def3r/def3r/llvm-project
-    set -x LD_LIBRARY_PATH $LLVM_PROJECT/install/lib $LD_LIBRARY_PATH
-    set -x LIBRARY_PATH $LLVM_PROJECT/install/lib $LIBRARY_PATH
+    set -x LLVM_PROJECT_INSTALL $HOME/def3r/llvm-project-15/install/
+    set -x LD_LIBRARY_PATH $LLVM_PROJECT_INSTALL/lib $LD_LIBRARY_PATH
+    set -x LIBRARY_PATH $LLVM_PROJECT_INSTALL/lib $LIBRARY_PATH
+    fish_add_path $LLVM_PROJECT_INSTALL/bin
 
     set -x XDG_CONFIG_HOME $HOME/.config/
+end
+
+function use-llvm
+    set version $argv[1]
+    set -gx LLVM_PROJECT_INSTALL $HOME/llvm$version
+    set -gx LD_LIBRARY_PATH $LLVM_PROJECT_INSTALL/lib $LD_LIBRARY_PATH
+    fish_add_path --prepend $LLVM_PROJECT_INSTALL/bin
+    echo "Switched to LLVM "(llvm-config --version)
 end
 
 function bobthefish_colors -S -d 'Define a custom bobthefish color scheme'
@@ -57,3 +66,4 @@ end
 
 # Generated for envman. Do not edit.
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
+export PATH="$HOME/.local/bin:$PATH"

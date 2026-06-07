@@ -75,3 +75,10 @@ config.bind('tt', 'config-cycle tabs.show multiple never')
 config.bind('st', 'config-cycle statusbar.show always never')
 config.bind('x', 'tab-close')
 config.bind('tn', 'open -t')
+
+# config.bind('h', 'scroll-px -25 0')
+# config.bind('j', 'scroll-px 0 25')
+# config.bind('k', 'scroll-px 0 -25')
+# config.bind('l', 'scroll-px 25 0')
+
+config.bind('d', 'jseval -q document.activeElement.blur()', mode='normal')
